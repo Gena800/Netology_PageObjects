@@ -26,5 +26,11 @@ public class TransferPage {
         transferButton.click();
         return new DashboardPage();
     }
+    public DashboardPage makeTransfer(String cardNumber, int amountToTransfer) {
+        amountInput.setValue(String.valueOf(amountToTransfer));
+        fromInput.setValue(cardNumber);
+        transferButton.click();
+        return new DashboardPage();
+    }
 
 }

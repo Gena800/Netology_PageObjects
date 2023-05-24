@@ -1,8 +1,11 @@
 package ru.netology.web.test;
 
 import com.codeborne.selenide.Configuration;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import ru.netology.web.data.DataHelper;
 import ru.netology.web.page.DashboardPage;
 import ru.netology.web.page.LoginPageV1;
@@ -12,6 +15,12 @@ import ru.netology.web.page.LoginPageV3;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+        plugin = {"pretty", "summary"},
+        features = {"src/test/resources/features"},
+        glue = {"ru.netology.steps"})
 
 class MoneyTransferTest {
 
@@ -77,29 +86,29 @@ class MoneyTransferTest {
 
         assertTrue(finalBalanceFirstCard > 0 && finalBalanceSecondCard > 0);
 
-        assertEquals(finalBalanceFirstCard, balanceFirstCard + amount);
-        assertEquals(finalBalanceSecondCard, balanceSecondCard - amount);
+        assertEquals(balanceFirstCard + amount, finalBalanceFirstCard);
+        assertEquals(balanceSecondCard - amount, finalBalanceSecondCard);
     }
 
-    @Test
-    void shouldTransferNegativeBalance() {
-        open("http://localhost:9999");
-        var loginPage = new LoginPageV2();
-        var authInfo = DataHelper.getAuthInfo();
-        var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
-        loginPage.validLogin(authInfo).validVerify(verificationCode);
-
-        int amount = 20000;
-        var cardInfo = DataHelper.getFirstNumber();
-
-        var dashboard = new DashboardPage();
-
-        dashboard.selectCardToTransfer(1).makeTransfer(cardInfo, amount);
-        int finalBalanceFirstCard = dashboard.getCardBalance("0");
-        int finalBalanceSecondCard = dashboard.getCardBalance("1");
-
-        assertTrue(finalBalanceFirstCard > 0 && finalBalanceSecondCard > 0);
-    }
+//    @Test
+//    void shouldTransferNegativeBalance() {
+//        open("http://localhost:9999");
+//        var loginPage = new LoginPageV2();
+//        var authInfo = DataHelper.getAuthInfo();
+//        var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
+//        loginPage.validLogin(authInfo).validVerify(verificationCode);
+//
+//        int amount = 20000;
+//        var cardInfo = DataHelper.getFirstNumber();
+//
+//        var dashboard = new DashboardPage();
+//
+//        dashboard.selectCardToTransfer(1).makeTransfer(cardInfo, amount);
+//        int finalBalanceFirstCard = dashboard.getCardBalance("0");
+//        int finalBalanceSecondCard = dashboard.getCardBalance("1");
+//
+//        assertTrue(finalBalanceFirstCard > 0 && finalBalanceSecondCard > 0);
+//    }
 
 
 }

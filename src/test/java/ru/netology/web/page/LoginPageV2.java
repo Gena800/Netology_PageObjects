@@ -32,4 +32,11 @@ public class LoginPageV2 {
         errorMessage.shouldHave(exactText("Ошибка! Неверно указан логин или пароль"));
         return null;
     }
+
+    public VerificationPage validLogin(String login, String password) {
+        loginField.setValue(login);
+        passwordField.setValue(password);
+        loginButton.click();
+        return new VerificationPage();
+    }
 }

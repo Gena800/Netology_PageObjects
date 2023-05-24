@@ -14,11 +14,15 @@ public class DashboardPage {
     private ElementsCollection cards = $$(".list__item div");
     private final String balanceStart = "баланс: ";
     private final String balanceFinish = " р.";
+    private final SelenideElement heading1 = $("[data-test-id=dashboard]");
+
+    public void verifyIsDashboardPage(){
+        heading1.shouldBe(visible);
+    }
 
 
-
-    public TransferPage selectCardToTransfer(int id) {
-        heading.get(id).click();
+    public TransferPage selectCardToTransfer(int indexCardTo) {
+        heading.get(indexCardTo).click();
         return new TransferPage();
     }
 

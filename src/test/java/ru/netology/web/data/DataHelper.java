@@ -42,15 +42,15 @@ public class DataHelper {
     @Value
     public static class CardInfo {
         public String cardNumber;
-        public String id;
+
     }
 
     public static CardInfo getFirstNumber() {
-        return new CardInfo("5559000000000001", "0");
+        return new CardInfo("5559000000000001");
     }
 
     public static CardInfo getSecondNumber() {
-        return new CardInfo("5559000000000002", "1");
+        return new CardInfo("5559000000000002");
     }
 
 }

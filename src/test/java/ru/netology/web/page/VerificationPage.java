@@ -22,6 +22,11 @@ public class VerificationPage {
         verifyButton.click();
         return new DashboardPage();
     }
+    public DashboardPage validVerify(String verifyCode) {
+        codeField.setValue(verifyCode);
+        verifyButton.click();
+        return new DashboardPage();
+    }
     public DashboardPage UnValidVerify() {
         codeField.setValue("123");
         verifyButton.click();
