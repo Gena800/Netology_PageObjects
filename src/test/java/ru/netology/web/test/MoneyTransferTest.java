@@ -1,26 +1,20 @@
 package ru.netology.web.test;
 
-import com.codeborne.selenide.Configuration;
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
-import org.junit.jupiter.api.BeforeEach;
+
+
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+
 import ru.netology.web.data.DataHelper;
 import ru.netology.web.page.DashboardPage;
-import ru.netology.web.page.LoginPageV1;
+
 import ru.netology.web.page.LoginPageV2;
-import ru.netology.web.page.LoginPageV3;
+
 
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@RunWith(Cucumber.class)
-@CucumberOptions(
-        plugin = {"pretty", "summary"},
-        features = {"src/test/resources/features"},
-        glue = {"ru.netology.web.steps"})
+
 
 class MoneyTransferTest {
 
