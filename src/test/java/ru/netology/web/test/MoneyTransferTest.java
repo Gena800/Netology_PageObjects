@@ -81,25 +81,25 @@ class MoneyTransferTest {
         assertEquals(finalBalanceSecondCard, balanceSecondCard - amount);
     }
 
-//    @Test
-//    void shouldTransferNegativeBalance() {
-//        open("http://localhost:9999");
-//        var loginPage = new LoginPageV2();
-//        var authInfo = DataHelper.getAuthInfo();
-//        var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
-//        loginPage.validLogin(authInfo).validVerify(verificationCode);
-//
-//        int amount = 20000;
-//        var cardInfo = DataHelper.getFirstNumber();
-//
-//        var dashboard = new DashboardPage();
-//
-//        dashboard.selectCardToTransfer(1).makeTransfer(cardInfo, amount);
-//        int finalBalanceFirstCard = dashboard.getCardBalance("0");
-//        int finalBalanceSecondCard = dashboard.getCardBalance("1");
-//
-//        assertTrue(finalBalanceFirstCard > 0 && finalBalanceSecondCard > 0);
-//    }
+    @Test
+    void shouldTransferNegativeBalance() {
+        open("http://localhost:9999");
+        var loginPage = new LoginPageV2();
+        var authInfo = DataHelper.getAuthInfo();
+        var verificationCode = DataHelper.getVerificationCodeFor(authInfo);
+        loginPage.validLogin(authInfo).validVerify(verificationCode);
+
+        int amount = 20000;
+        var cardInfo = DataHelper.getFirstNumber();
+
+        var dashboard = new DashboardPage();
+
+        dashboard.selectCardToTransfer(1).makeTransfer(cardInfo, amount);
+        int finalBalanceFirstCard = dashboard.getCardBalance("0");
+        int finalBalanceSecondCard = dashboard.getCardBalance("1");
+
+        assertTrue(finalBalanceFirstCard > 0 && finalBalanceSecondCard > 0);
+    }
 
 
 }
