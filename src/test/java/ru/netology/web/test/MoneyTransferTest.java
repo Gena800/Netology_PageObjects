@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @CucumberOptions(
         plugin = {"pretty", "summary"},
         features = {"src/test/resources/features"},
-        glue = {"ru.netology.steps"})
+        glue = {"ru.netology.web.steps"})
 
 class MoneyTransferTest {
 
