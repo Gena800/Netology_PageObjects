@@ -3,7 +3,7 @@ package ru.netology.web.page;
 import com.codeborne.selenide.SelenideElement;
 import ru.netology.web.data.DataHelper;
 
-import static com.codeborne.selenide.Condition.exactText;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -23,12 +23,6 @@ public class TransferPage {
     public DashboardPage makeTransfer(DataHelper.CardInfo cardInfo, int amountToTransfer) {
         amountInput.setValue(String.valueOf(amountToTransfer));
         fromInput.setValue(cardInfo.getCardNumber());
-        transferButton.click();
-        return new DashboardPage();
-    }
-    public DashboardPage makeTransfer(String cardNumber, int amountToTransfer) {
-        amountInput.setValue(String.valueOf(amountToTransfer));
-        fromInput.setValue(cardNumber);
         transferButton.click();
         return new DashboardPage();
     }

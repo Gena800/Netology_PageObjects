@@ -22,19 +22,14 @@ public class VerificationPage {
         verifyButton.click();
         return new DashboardPage();
     }
-    public DashboardPage validVerify(String verifyCode) {
-        codeField.setValue(verifyCode);
+    public VerificationPage unValidVerify(DataHelper.VerificationCode verificationCode) {
+        codeField.setValue(verificationCode.getCode());
         verifyButton.click();
-        return new DashboardPage();
-    }
-    public DashboardPage UnValidVerify() {
-        codeField.setValue("123");
-        verifyButton.click();
-        return shouldErrorMessage();
+        return this;
     }
 
-    public DashboardPage shouldErrorMessage() {
+    public void shouldErrorMessage() {
         errorMessage.shouldHave(exactText("Ошибка! Неверно указан код! Попробуйте ещё раз."));
-        return null;
+
     }
 }

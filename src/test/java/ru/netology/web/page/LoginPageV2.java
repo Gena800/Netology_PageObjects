@@ -5,7 +5,7 @@ import ru.netology.web.data.DataHelper;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+
 
 public class LoginPageV2 {
     private SelenideElement loginField = $("[data-test-id=login] input");
@@ -21,22 +21,17 @@ public class LoginPageV2 {
         return new VerificationPage();
     }
 
-    public VerificationPage unValidLogin(DataHelper.AuthInfoWrong info) {
+    public LoginPageV2 unValidLogin(DataHelper.AuthInfoWrong info) {
         loginField.setValue(info.getLogin());
         passwordField.setValue(info.getPassword());
         loginButton.click();
-        return shouldErrorMessage();
+        return this;
     }
 
-    public VerificationPage shouldErrorMessage() {
+    public void shouldErrorMessage() {
         errorMessage.shouldHave(exactText("Ошибка! Неверно указан логин или пароль"));
-        return null;
+
     }
 
-    public VerificationPage validLogin(String login, String password) {
-        loginField.setValue(login);
-        passwordField.setValue(password);
-        loginButton.click();
-        return new VerificationPage();
-    }
+
 }

@@ -23,14 +23,17 @@ class MoneyTransferTest {
     void shouldNotLogin() {
         open("http://localhost:9999");
         var loginPage = new LoginPageV2();
-        loginPage.unValidLogin(DataHelper.getAuthInfoWrong());
+        loginPage.unValidLogin(DataHelper.getAuthInfoWrong()).shouldErrorMessage();
     }
 
     @Test
     void shouldNotVerify() {
         open("http://localhost:9999");
         var loginPage = new LoginPageV2();
-        loginPage.validLogin(DataHelper.getAuthInfo()).UnValidVerify();
+        var authInfo = DataHelper.getAuthInfo();
+        var verificationCode = DataHelper.getUnVerificationCodeFor(authInfo);
+
+        loginPage.validLogin(authInfo).unValidVerify(verificationCode).shouldErrorMessage();
     }
 
     @Test
