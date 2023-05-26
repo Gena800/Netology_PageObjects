@@ -19,14 +19,10 @@ public class DataHelper {
     public static AuthInfo getOtherAuthInfo(AuthInfo original) {
         return new AuthInfo("petya", "123qwerty");
     }
-    @Value
-    public static class AuthInfoWrong {
-        private String login;
-        private String password;
-    }
 
-    public static AuthInfoWrong getAuthInfoWrong() {
-        return new AuthInfoWrong("petya", "qwerty");
+
+    public static AuthInfo getAuthInfoWrong() {
+        return new AuthInfo("petya", "qwerty");
     }
 
 

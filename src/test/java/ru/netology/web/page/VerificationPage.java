@@ -18,11 +18,10 @@ public class VerificationPage {
     }
 
     public DashboardPage validVerify(DataHelper.VerificationCode verificationCode) {
-        codeField.setValue(verificationCode.getCode());
-        verifyButton.click();
+        verify(verificationCode);
         return new DashboardPage();
     }
-    public VerificationPage unValidVerify(DataHelper.VerificationCode verificationCode) {
+    public VerificationPage verify(DataHelper.VerificationCode verificationCode) {
         codeField.setValue(verificationCode.getCode());
         verifyButton.click();
         return this;
@@ -30,6 +29,10 @@ public class VerificationPage {
 
     public void shouldErrorMessage() {
         errorMessage.shouldHave(exactText("Ошибка! Неверно указан код! Попробуйте ещё раз."));
+
+    }
+    public void shouldErrorMessageManyTry() {
+        errorMessage.shouldHave(exactText("Ошибка! Превышено количество попыток ввода кода!"));
 
     }
 }

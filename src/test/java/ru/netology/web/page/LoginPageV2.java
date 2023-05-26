@@ -15,13 +15,11 @@ public class LoginPageV2 {
 
 
     public VerificationPage validLogin(DataHelper.AuthInfo info) {
-        loginField.setValue(info.getLogin());
-        passwordField.setValue(info.getPassword());
-        loginButton.click();
+        login(info);
         return new VerificationPage();
     }
 
-    public LoginPageV2 unValidLogin(DataHelper.AuthInfoWrong info) {
+    public LoginPageV2 login(DataHelper.AuthInfo info) {
         loginField.setValue(info.getLogin());
         passwordField.setValue(info.getPassword());
         loginButton.click();

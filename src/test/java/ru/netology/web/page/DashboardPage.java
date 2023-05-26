@@ -3,6 +3,7 @@ package ru.netology.web.page;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -13,8 +14,9 @@ public class DashboardPage {
     private final String balanceStart = "баланс: ";
     private final String balanceFinish = " р.";
     private final SelenideElement heading1 = $("[data-test-id=dashboard]");
+    private SelenideElement errorMessage = $("[data-test-id=error-notification] .notification__content");
 
-    public void verifyIsDashboardPage(){
+    public void verifyIsDashboardPage() {
         heading1.shouldBe(visible);
     }
 
@@ -37,5 +39,8 @@ public class DashboardPage {
         return Integer.parseInt(value);
     }
 
+    public void shouldErrorMessage() {
+        errorMessage.shouldHave(exactText("Ошибка! Недостаточно средств на карте."));
+    }
 
 }
